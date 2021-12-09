@@ -64,3 +64,5 @@ jobs:
         run: docker build --build-arg ARCH=$ARCH --build-arg PHP_VER=$PHP_VER --build-arg BUILD_TYPE=$BUILD_TYPE -f ./.github/docker/${OS}/${ARCH}/Dockerfile -t $image_name .
       - name: Build and Test
         run: docker run --name runtest --workdir /github/workspace --rm -e GITHUB_WORKSPACE -e GITHUB_ENV -v "${GITHUB_WORKSPACE}":"/github/workspace" $image_name
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
